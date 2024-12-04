@@ -25,7 +25,7 @@ class TodoItem(models.Model):
     title = models.CharField(max_length=100, help_text='Enter a title for the todo item', null=False, blank=False)
     description = models.TextField(max_length=1000, help_text='Enter a description for the todo item', null=False, blank=False)
     tags = models.ManyToManyField(Tag, help_text='Select a tag for this todo item', blank=True)
-    created_at = models.DateTimeField(default=timezone.now, auto_now_add=True)
+    created_at = models.DateTimeField(default=timezone.now, editable=False)
     due_date = models.DateTimeField(help_text='Enter the due date for the todo item', null=True, blank=True)
 
     STATUS_CHOICES = [
