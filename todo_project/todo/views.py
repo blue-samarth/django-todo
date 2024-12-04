@@ -31,6 +31,7 @@ class TodoItemCreateAPIView(generics.CreateAPIView):
             todo_item.tags.add(tag_obj)
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+   
     
 class TodoItemListAPIView(generics.ListAPIView):
     """
@@ -42,6 +43,7 @@ class TodoItemListAPIView(generics.ListAPIView):
     queryset = TodoItem.objects.all()
     serializer_class = TodoItemSerializer
 
+
 class TodoItemDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     """
     View to retrieve, update or delete a todo item
@@ -51,6 +53,7 @@ class TodoItemDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     """
     queryset = TodoItem.objects.all()
     serializer_class = TodoItemSerializer
+
 
 class TodoUpdateAPIView(generics.UpdateAPIView):
     """
@@ -77,7 +80,8 @@ class TodoUpdateAPIView(generics.UpdateAPIView):
             tag_obj, created = Tag.objects.get_or_create(name=tag)
             todo_item.tags.add(tag_obj)
         return Response(serializer.data)
-    
+
+
 class TodoDeleteAPIView(generics.DestroyAPIView):
     """
     View to delete a todo item
